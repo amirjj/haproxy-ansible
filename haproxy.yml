@@ -1,0 +1,33 @@
+#!/usr/bin/env ansible-playbook
+
+##############################################################
+# Author: Amir Jamshidi jam
+# Email: amir.jamshidijam@gmail.com
+##############################################################
+
+- name: Install and Configure Haproxy
+  hosts: testservers
+  sudo: False
+  vars_files:
+    - settings.yml
+  tasks:
+    - name: Installing curl
+      apt: pkg=curl update_cache=yes
+
+    - name: Adding repository
+      shell: echo deb http://httpredir.debian.org/debian wheezy-backports main | tee /etc/apt/sources.list.d/backports.list
+
+    - name: recieveing signature
+      shell: curl http://haproxy.debian.net/bernat.debian.org.gpg | apt-key add -
+
+    - name: Adding repository
+      shell:  echo deb http://haproxy.debian.net wheezy-backports-1.6 main | tee /etc/apt/sources.list.d/haproxy.list
+
+    - name: Updateing repository
+      shell: apt-get update
+
+    - name: Installing haproxy
+      shell:  apt-get install haproxy -t wheezy-backports-1.6
+
+    - name: Copying haproxy config file
+      copy: src=./files/haproxy.cfg dest=/etc/haproxy/haproxy.cfg force=yes

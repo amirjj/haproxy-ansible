@@ -1,5 +1,5 @@
 #Default ssh port is 22 as we mentioned it in ancible.cfg  file
-#Default user is root as in ansible.vfg
+#Default user is root as in ansible.cfg
 #We can overwrite parameteres with the follow format:
 #alias ansible_ssh_host=<addr> ansible_ssh_pass=<pass>
 #If you want to use ssh to connect  to servers you need to have sshpass install

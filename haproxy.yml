@@ -27,7 +27,7 @@
       shell: apt-get update
 
     - name: Installing haproxy
-      shell:  apt-get install haproxy -t wheezy-backports-1.6
+      shell:  apt-get install haproxy -t wheezy-backports-1.6 -y
 
     - name: Copying haproxy config file
       copy: src=./files/haproxy.cfg dest=/etc/haproxy/haproxy.cfg force=yes

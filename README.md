@@ -32,9 +32,3 @@ Usage
 **3**- Run haproxy.yml with this command:   "ansible-playbook haproxy.yml -vvvv"
 
 
-Authors
-=======
-
-**Author**: Amir Jamshidi jam
-
-**Email**: amir.jamshidijam@gmail.com
